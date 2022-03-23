@@ -1,25 +1,15 @@
 import unittest
-from unittest.mock import patch
 
-from task_02_tournament.main import main
+from task_02_tournament.main import get_participants_names
 
 
-class Test02Tournament(unittest.TestCase):
-    @patch('task_02_tournament.main.print')
-    def test_main(self, mock_print):
+class Test02GetParticipantsNames(unittest.TestCase):
+    def test_get_participants_names(self):
         """
         Проверяем обычный кейс. Выводим элементы списка только с чётными индексами.
         """
-        main()
-        print_result = mock_print.call_args_list
-
-        if not print_result:
-            self.fail("Вы ничего не выводите")
-
-        self.assertEqual(
-            ' '.join([str(j) for j in print_result[-1].args]),
-            "Первый день: ['Артемий', 'Влад', 'Дима', 'Женя']",
-        )
+        participants_names = get_participants_names(["Артемий", "Борис", "Влад", "Гоша"])
+        self.assertEqual(participants_names, ["Артемий", "Влад"])
 
 
 if __name__ == '__main__':

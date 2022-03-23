@@ -1,36 +1,25 @@
 import unittest
-from unittest.mock import patch
-
-from task_04_videocards.main import main
+from task_04_videocards.main import select_video_cards
 
 
-class Test04Videocards(unittest.TestCase):
-    @patch('task_04_videocards.main.print')
-    @patch('task_04_videocards.main.input')
-    def test_main(self, mock_input, mock_print):
+class Test04SelectVideoCards(unittest.TestCase):
+    def test_select_video_cards(self):
         """
-        Проверяем обычный кейс. При вводе "5", "3070", "2060", "3090", "3070", "3090"  должны получить "Неподходящие значения: 0 2"
+        Проверяем обычный кейс. [3070, 2060, 3090, 3070, 3090]  должны получить [3070, 2060, 3070]
         """
-        videocards_count = "5"
-        videocards_list = ["3070", "2060", "3090", "3070", "3090"]
-        mock_input.side_effect = [videocards_count] + videocards_list
-        main()
-        print_result = mock_print.call_args_list
+        video_cards_list = [3070, 2060, 3090, 3070, 3090]
+        new_video_cards_list = select_video_cards(video_cards_list)
 
-        if not print_result:
-            self.fail("Вы ничего не выводите")
+        self.assertEqual(new_video_cards_list, [3070, 2060, 3070])
 
-        for i in range(int(videocards_count)):
-            self.assertEqual(' '.join([str(j) for j in print_result[i].args]).lstrip(), f'{i+1} Видеокарта:')
+    def test_select_video_cards_no_result(self):
+        """
+        Проверяем обычный кейс. [3070, 3070]  должны получить []
+        """
+        video_cards_list = [3070, 3070]
+        new_video_cards_list = select_video_cards(video_cards_list)
 
-        self.assertEqual(
-            ' '.join([str(j) for j in print_result[-2].args]),
-            'Старый список видеокарт: [ 3070 2060 3090 3070 3090 ]',
-        )
-        self.assertEqual(
-            ' '.join([str(j) for j in print_result[-1].args]),
-            'Новый список видеокарт: [ 3070 2060 3070 ]',
-        )
+        self.assertEqual(new_video_cards_list, [])
 
 
 if __name__ == '__main__':

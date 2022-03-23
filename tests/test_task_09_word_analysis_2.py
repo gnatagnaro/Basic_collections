@@ -1,63 +1,29 @@
 import unittest
-from unittest.mock import patch
 
-from task_09_word_analysis_2.main import main
+from task_09_word_analysis_2.main import check_palindrome
 
 
-class Test09WordAnalysis2(unittest.TestCase):
-    @patch('task_09_word_analysis_2.main.print')
-    @patch('task_09_word_analysis_2.main.input')
-    def test_main_madam(self, mock_input, mock_print):
+class Test09CheckPalindrome(unittest.TestCase):
+    def test_check_palindrome_madam(self):
         """
-        Проверяем обычный кейс. При вводе "мадам" должны получить "Слово является палиндромом"
+        Проверяем обычный кейс. При вводе "мадам" True
         """
-        mock_input.return_value = "мадам"
-        main()
-        print_result = mock_print.call_args_list
+        is_palindrome = check_palindrome("мадам")
+        self.assertEqual(is_palindrome, True)
 
-        if not print_result:
-            self.fail("Вы ничего не выводите")
-
-        self.assertEqual(
-            ' '.join([str(j) for j in print_result[0].args]).lstrip(),
-            'Слово является палиндромом',
-        )
-
-    @patch('task_09_word_analysis_2.main.print')
-    @patch('task_09_word_analysis_2.main.input')
-    def test_main_abccba(self, mock_input, mock_print):
+    def test_check_palindrome_abccba(self):
         """
-        Проверяем обычный кейс. При вводе "abccba" должны получить "Слово является палиндромом"
+        Проверяем обычный кейс. При вводе "abccba" должны получить True
         """
-        mock_input.return_value = "abccba"
-        main()
-        print_result = mock_print.call_args_list
+        is_palindrome = check_palindrome("abccba")
+        self.assertEqual(is_palindrome, True)
 
-        if not print_result:
-            self.fail("Вы ничего не выводите")
-
-        self.assertEqual(
-            ' '.join([str(j) for j in print_result[0].args]).lstrip(),
-            'Слово является палиндромом',
-        )
-
-    @patch('task_09_word_analysis_2.main.print')
-    @patch('task_09_word_analysis_2.main.input')
-    def test_main_abbd(self, mock_input, mock_print):
+    def test_check_palindromen_abbd(self):
         """
-        Проверяем обычный кейс. При вводе "abbd" должны получить "Слово является палиндромом"
+        Проверяем обычный кейс. При вводе "abbd" должны получить False
         """
-        mock_input.return_value = "abbd"
-        main()
-        print_result = mock_print.call_args_list
-
-        if not print_result:
-            self.fail("Вы ничего не выводите")
-
-        self.assertEqual(
-            ' '.join([str(j) for j in print_result[0].args]).lstrip(),
-            'Слово не является палиндромом',
-        )
+        is_palindrome = check_palindrome("abbd")
+        self.assertEqual(is_palindrome, False)
 
 
 if __name__ == '__main__':

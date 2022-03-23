@@ -1,29 +1,24 @@
 import unittest
-from unittest.mock import patch
 
-from task_03_cells.main import main
+from task_03_cells.main import select_cells
 
 
-class Test03Cells(unittest.TestCase):
-    @patch('task_03_cells.main.print')
-    @patch('task_03_cells.main.input')
-    def test_main(self, mock_input, mock_print):
+class Test03SelectCells(unittest.TestCase):
+    def test_select_cells(self):
         """
-        Проверяем обычный кейс. При вводе 5, 3, 0, 6, 2, 10  должны получить "Неподходящие значения: 0 2"
+        Проверяем обычный кейс. При параметрах [5, 3, 0, 6, 2, 10, 4]  должны получить [0 2, 4]
         """
-        cells_num = 5
-        effic_list = [3, 0, 6, 2, 10]
-        mock_input.side_effect = [cells_num] + effic_list
-        main()
-        print_result = mock_print.call_args_list
+        cells = [3, 0, 6, 2, 10, 4]
+        res_cells = select_cells(cells)
+        self.assertEqual(res_cells, [0, 2, 4])
 
-        if not print_result:
-            self.fail("Вы ничего не выводите")
-
-        for i in range(cells_num):
-            self.assertEqual(' '.join([str(j) for j in print_result[i].args]), f'Эффективность {str(i + 1)} клетки:')
-
-        self.assertEqual(' '.join([str(j) for j in print_result[-1].args]), 'Неподходящие значения: 0 2')
+    def test_select_cells_no_result(self):
+        """
+        Проверяем обычный кейс. При параметрах [1, 2, 3]  должны получить []
+        """
+        cells = [1, 2, 3]
+        res_cells = select_cells(cells)
+        self.assertEqual(res_cells, [])
 
 
 if __name__ == '__main__':
