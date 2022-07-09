@@ -13,7 +13,7 @@ def get_input_parameters():
 
 def display_result(is_palindrome):
     """
-    Выводим список оставшихся видеокарт
+    Выводим информацию является ли строка палиндромом
 
     :param is_palindrome: является ли палиндромом, например: True
     :type is_palindrome: bool
