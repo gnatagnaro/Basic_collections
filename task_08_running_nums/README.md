@@ -45,7 +45,7 @@ def display_result(shifted_list):
     """
     Выводим получившиеся список
     
-    :param shifted_list: сдвинутый список, например: [5, 1, 2, 3, 4]
+    :param shifted_list: сдвинутый список, например: [-3, 0, 10, 1, 4]
     :type shifted_list: List[int]
     """
     # TODO: в этой функции пишем весь необходимый код 
@@ -63,7 +63,7 @@ def shift_list(shift, original_list):
     :param original_list: Исходный список: [1, 4, -3, 0, 10]
     :type original_list: List[int]
     
-    :return: сдвинутый список, например: [5, 1, 2, 3, 4]
+    :return: сдвинутый список, например: [-3, 0, 10, 1, 4]
     :rtype: List[int]
     """
     # TODO: в этой функции пишем логику сдвига списка вправо на shift элементов. 
