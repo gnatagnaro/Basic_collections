@@ -4,8 +4,8 @@ def get_input_parameters():
     Незабываем проверит данные: все числа целые и не превышают 200.
 
     :return: список весов контейнеров и вес нового контейнера,
-             например: ([165, 163, 160, 160, 157, 157, 155, 154], 162)
-    :rtype: Tuple[List[int], int]
+             например: [[165, 163, 160, 160, 157, 157, 155, 154], 162]
+    :rtype: List[List[int], int]
     """
     # TODO: в этой функции пишем весь необходимый код для
     #  получения входных параметров.
@@ -50,7 +50,9 @@ def search_serial_number_new_container(list_container_weights, new_container_wei
 if __name__ == '__main__':
     # Это условие необходимо, чтобы в рамках автотестов не произошёл
     # вызов функций get_input_parameters и display_result
-    list_container_weights, new_container_weight = get_input_parameters()  # получаем параметры
+    input_data = get_input_parameters()  # получаем параметры
+    list_container_weights = input_data[0]
+    new_container_weight = input_data[1]
     # Ищем куда вставим новый контейнер.
     serial_number_new_container = search_serial_number_new_container(list_container_weights, new_container_weight)
     display_result(serial_number_new_container)  # выводим результат
