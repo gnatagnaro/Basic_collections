@@ -10,7 +10,7 @@ class Test06CountNumberUniqueLetters(unittest.TestCase):
         """
         number_unique_letters = count_number_unique_letters("привет")
 
-        self.assertEqual(number_unique_letters, 6)
+        self.assertEqual(6, number_unique_letters)
 
     def test_main_lava(self):
         """
@@ -18,7 +18,7 @@ class Test06CountNumberUniqueLetters(unittest.TestCase):
         """
         number_unique_letters = count_number_unique_letters("лава")
 
-        self.assertEqual(number_unique_letters, 2)
+        self.assertEqual(2, number_unique_letters)
 
 
 if __name__ == '__main__':

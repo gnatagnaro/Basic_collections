@@ -10,7 +10,7 @@ class Test04SelectVideoCards(unittest.TestCase):
         video_cards_list = [3070, 2060, 3090, 3070, 3090]
         new_video_cards_list = select_video_cards(video_cards_list)
 
-        self.assertEqual(new_video_cards_list, [3070, 2060, 3070])
+        self.assertEqual([3070, 2060, 3070], new_video_cards_list)
 
     def test_select_video_cards_no_result(self):
         """
@@ -19,7 +19,7 @@ class Test04SelectVideoCards(unittest.TestCase):
         video_cards_list = [3070, 3070]
         new_video_cards_list = select_video_cards(video_cards_list)
 
-        self.assertEqual(new_video_cards_list, [])
+        self.assertEqual([], new_video_cards_list)
 
 
 if __name__ == '__main__':

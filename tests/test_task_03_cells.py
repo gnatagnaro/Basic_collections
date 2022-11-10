@@ -10,7 +10,7 @@ class Test03SelectCells(unittest.TestCase):
         """
         cells = [3, 0, 6, 2, 10, 4]
         res_cells = select_cells(cells)
-        self.assertEqual(res_cells, [0, 2, 4])
+        self.assertEqual([0, 2, 4], res_cells)
 
     def test_select_cells_no_result(self):
         """
@@ -18,7 +18,7 @@ class Test03SelectCells(unittest.TestCase):
         """
         cells = [1, 2, 3]
         res_cells = select_cells(cells)
-        self.assertEqual(res_cells, [])
+        self.assertEqual([], res_cells)
 
 
 if __name__ == '__main__':

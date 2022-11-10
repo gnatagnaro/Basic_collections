@@ -18,8 +18,8 @@ class Test05AddFavoriteFilm(unittest.TestCase):
 
         favorite_films, errors = add_favorite_film(new_favorite_films,available_films )
 
-        self.assertEqual(set(favorite_films), {"Леон", "Мементо"})
-        self.assertEqual(set(errors), {"Безумный Макс", "Царь горы"})
+        self.assertEqual({"Леон", "Мементо"}, set(favorite_films))
+        self.assertEqual({"Безумный Макс", "Царь горы"}, set(errors))
 
 
 if __name__ == '__main__':

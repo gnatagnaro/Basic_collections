@@ -13,7 +13,7 @@ class Test07SearchSerialNumberNewContainer(unittest.TestCase):
 
         serial_number_new_container = search_serial_number_new_container(list_container_weights, new_container_weight)
 
-        self.assertEqual(serial_number_new_container, 3)
+        self.assertEqual(3, serial_number_new_container)
 
 
 if __name__ == '__main__':

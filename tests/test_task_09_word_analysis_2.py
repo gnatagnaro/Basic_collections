@@ -9,21 +9,21 @@ class Test09CheckPalindrome(unittest.TestCase):
         Проверяем обычный кейс. При вводе "мадам" True
         """
         is_palindrome = check_palindrome("мадам")
-        self.assertEqual(is_palindrome, True)
+        self.assertEqual(True, is_palindrome)
 
     def test_check_palindrome_abccba(self):
         """
         Проверяем обычный кейс. При вводе "abccba" должны получить True
         """
         is_palindrome = check_palindrome("abccba")
-        self.assertEqual(is_palindrome, True)
+        self.assertEqual(True, is_palindrome)
 
     def test_check_palindromen_abbd(self):
         """
         Проверяем обычный кейс. При вводе "abbd" должны получить False
         """
         is_palindrome = check_palindrome("abbd")
-        self.assertEqual(is_palindrome, False)
+        self.assertEqual(False, is_palindrome)
 
 
 if __name__ == '__main__':

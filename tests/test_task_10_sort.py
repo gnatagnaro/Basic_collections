@@ -9,7 +9,7 @@ class Test10Sort(unittest.TestCase):
         Проверяем обычный кейс. При вводе [1, 4, -3, 0, 10] должны получить [-3, 0, 1, 4, 10]
         """
         sorted_list = sort_list([1, 4, -3, 0, 10])
-        self.assertEqual(sorted_list, [-3, 0, 1, 4, 10])
+        self.assertEqual([-3, 0, 1, 4, 10], sorted_list)
 
 
 if __name__ == '__main__':
