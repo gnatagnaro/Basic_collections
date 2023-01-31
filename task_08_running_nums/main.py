@@ -5,10 +5,20 @@ def get_input_parameters():
     :return: например: [3, [1, 4, -3, 0, 10]]
     :rtype: List[int, List[int]]
     """
-    # TODO: в этой функции пишем весь необходимый код для
-    #  получения входных параметров.
-    #  Логику расчётов тут не программируем
-    pass
+    all_list = []
+    cur_list = []
+
+    n = int(input('Введите кол-во элементов списка: '))
+    for i in range(n):
+        x = int(input('Введите элемент списка: '))
+        cur_list.append(x)
+
+    _shift = int(input('Введите сдвиг: '))
+    all_list.append(_shift)
+    all_list.append(cur_list)
+    print('Изначальный список:', cur_list)
+
+    return all_list
 
 
 def display_result(shifted_list):
@@ -18,10 +28,7 @@ def display_result(shifted_list):
     :param shifted_list: сдвинутый список, например: [5, 1, 2, 3, 4]
     :type shifted_list: List[int]
     """
-    # TODO: в этой функции пишем весь необходимый код
-    #  для вывода результата в нужном формате.
-    #  Логику расчётов тут не программируем
-    pass
+    print('Сдвинутый список:', shifted_list)
 
 
 def shift_list(shift, original_list):
@@ -36,13 +43,20 @@ def shift_list(shift, original_list):
     :return: сдвинутый список, например: [5, 1, 2, 3, 4]
     :rtype: List[int]
     """
-    # TODO: в этой функции пишем логику сдвига списка вправо на shift элементов.
-    #  print'ов и input'ов тут не должно быть.
-    #  Функция на вход принимает ранее полученные данные
-    #  (из функции get_input_parameters).
-    #  Функция на выход отдаёт результат необходимый для отображения работы программы,
-    #  который будет передан в функцию display_result.
-    pass
+    #original_list = original_list[-shift:] + original_list[:-shift]
+    # print(original_list)
+
+    new_ls = [0] * len(original_list)
+    j = 0
+    for i in range(len(original_list)):
+        if i + shift >= len(original_list):
+
+            new_ls[j] = original_list[i]
+            j += 1
+        else:
+            new_ls[i + shift] = original_list[i]
+
+    return new_ls
 
 
 if __name__ == '__main__':

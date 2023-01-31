@@ -1,48 +1,34 @@
 def get_input_parameters():
-    """
-    Получаем список видеокарт
 
-    :return: набор видеокарт, например: [3070, 2060, 3090, 3070, 3090]
-    :rtype: List[int]
-    """
-    # TODO: в этой функции пишем весь необходимый код для
-    #  получения входных параметров.
-    #  Логику расчётов тут не программируем
-    pass
+    n = int(input('Количество видеокарт: '))
+    video_list = []
+
+    for i in range(n):
+        x = int(input(f'{i + 1} Видеокарта: '))
+        video_list.append(x)
+
+    return video_list
 
 
 def display_result(old_video_cards, new_video_cards):
-    """
-    Выводим список оставшихся видеокарт
 
-    :param old_video_cards: старый набор видеокарт, например: [3070, 2060, 3090, 3070, 3090]
-    :type old_video_cards: List[int]
-    :param new_video_cards: новый набор видеокарт, например: [3070, 2060, 3070]
-    :type new_video_cards: List[int]
-    """
-    # TODO: в этой функции пишем весь необходимый код
-    #  для вывода результата в нужном формате.
-    #  Логику расчётов тут не программируем
-    pass
+    print(f'Старый список видеокарт: {old_video_cards}')
+    print(f'Новый список видеокарт: {new_video_cards}')
 
 
 def select_video_cards(video_cards):
-    """
-    Удаляем из списка видеокарт наибольшие элементы.
+    new_list = []
 
-    :param video_cards: набор видеокарт, например: [3070, 2060, 3090, 3070, 3090]
-    :type video_cards: List[int]
+    maxim = -1
+    for j in range(len(video_cards)):
+        if video_cards[j] > maxim:
+            maxim = video_cards[j]
 
-    :return: набор оставшихся видеокарт, например: [3070, 2060, 3070]
-    :rtype: List[int]
-    """
-    # TODO: в этой функции пишем логику удаление из списка видеокарт наибольшие элементы.
-    #  print'ов и input'ов тут не должно быть.
-    #  Функция на вход принимает ранее полученные данные
-    #  (из функции get_input_parameters).
-    #  Функция на выход отдаёт результат необходимый для отображения работы программы,
-    #  который будет передан в функцию display_result.
-    pass
+    for i in range(len(video_cards)):
+        if video_cards[i] != maxim:
+            new_list.append(video_cards[i])
+
+    return new_list
 
 
 if __name__ == '__main__':

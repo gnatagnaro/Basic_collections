@@ -1,15 +1,12 @@
 def get_input_parameters():
-    """
-    Получаем список фильмов, которые пользователь хочет добавить в "любимые"
+    films = []
+    count = int(input('Сколько фильмов хотите добавить? '))
 
-    :return: добавляемые фильмы, например: ["Леон", "Безумный Макс", "Мементо", "Царь горы"]
-    :rtype: List[str]
-    """
-    # TODO: в этой функции пишем весь необходимый код для
-    #  получения входных параметров.
-    #  Логику расчётов тут не программируем
-    pass
+    for film in range(count):
+        name = input('Введите название фильма: ')
+        films.append(name)
 
+    return films
 
 def display_result(favorite_films, errors):
     """
@@ -23,31 +20,21 @@ def display_result(favorite_films, errors):
     # TODO: в этой функции пишем весь необходимый код
     #  для вывода результата в нужном формате.
     #  Логику расчётов тут не программируем
-    pass
+    print('Ваш список любимых фильмов:', favorite_films)
+    print('Список ненайденных фильмов:', errors)
 
 
 def add_favorite_film(new_favorite_films, available_films):
-    """
-    Добавляем фильмы в список "любимых".
+    my_films = []
+    error_films = []
 
-    :param new_favorite_films: фильмы, которые нужно добавить в "любимые",
-           например: ["Леон", "Безумный Макс", "Мементо", "Царь горы"]
-    :type new_favorite_films: List[str]
-    :param available_films: фильмы, которые есть на киносайте,
-           например: ["Леон", "Назад в будущее", "Мементо"]
-    :type available_films: List[str]
-
-    :return: Список фильмов в списке "любимых" и список не найденных фильмов,
-             например: (["Леон", "Мементо"], ["Безумный Макс", "Царь горы"])
-    :rtype: Tuple[List[str], List[str]]
-    """
-    # TODO: в этой функции пишем логику добавлениея фильмов в список "любимых".
-    #  print'ов и input'ов тут не должно быть.
-    #  Функция на вход принимает ранее полученные данные
-    #  (из функции get_input_parameters).
-    #  Функция на выход отдаёт результат необходимый для отображения работы программы,
-    #  который будет передан в функцию display_result.
-    pass
+    for i in range(len(new_favorite_films)):
+        if new_favorite_films[i] in available_films:
+            my_films.append(new_favorite_films[i])
+        else:
+            print(f'Ошибка: фильма {new_favorite_films[i]} у нас нет :(')
+            error_films.append(new_favorite_films[i])
+    return my_films, error_films
 
 
 if __name__ == '__main__':
@@ -59,8 +46,5 @@ if __name__ == '__main__':
         "Мементо", "Отступники", "Деревня"
     ]
     new_favorite_films = get_input_parameters()  # получаем параметры
-    favorite_films, errors = add_favorite_film(
-        new_favorite_films,
-        available_films
-    )  # добавлем фильмы в список "любимых".
+    favorite_films, errors = add_favorite_film(new_favorite_films, available_films)  #добавлем фильмы в список "любимых"
     display_result(favorite_films, errors)  # выводим результат

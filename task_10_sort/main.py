@@ -5,10 +5,15 @@ def get_input_parameters():
     :return: неотсортированный список чисел, например: [1, 4, -3, 0, 10]
     :rtype: List[int]
     """
-    # TODO: в этой функции пишем весь необходимый код для
-    #  получения входных параметров.
-    #  Логику расчётов тут не программируем
-    pass
+    n = int(input('Введите количество чисел в списке: '))
+    num_list = []
+
+    for i in range(n):
+        num = int(input('Введите число: '))
+        num_list.append(num)
+
+    print('Изначальный список:', num_list)
+    return num_list
 
 
 def display_result(sorted_list):
@@ -18,10 +23,7 @@ def display_result(sorted_list):
     :param sorted_list: отсортированный список, например: [-3, 0, 1, 4, 10]
     :type sorted_list: List[int]
     """
-    # TODO: в этой функции пишем весь необходимый код
-    #  для вывода результата в нужном формате.
-    #  Логику расчётов тут не программируем
-    pass
+    print('Отсортированный список:', original_list)
 
 
 def sort_list(original_list):
@@ -34,14 +36,11 @@ def sort_list(original_list):
     :return: отсортированный, например: [-3, 0, 1, 4, 10]
     :rtype: List[int]
     """
-    # TODO: в этой функции пишем логику сортировки списка.
-    #  print'ов и input'ов тут не должно быть.
-    #  Функция на вход принимает ранее полученные данные
-    #  (из функции get_input_parameters).
-    #  Функция на выход отдаёт результат необходимый для отображения работы программы,
-    #  который будет передан в функцию display_result.
-    pass
-
+    for minim in range(len(original_list)):
+        for curr in range(minim, len(original_list)):
+            if original_list[curr] < original_list[minim]:
+                original_list[curr], original_list[minim] = original_list[minim], original_list[curr]
+    return original_list
 
 if __name__ == '__main__':
     # Это условие необходимо, чтобы в рамках автотестов не произошёл

@@ -7,10 +7,22 @@ def get_input_parameters():
              например: [[165, 163, 160, 160, 157, 157, 155, 154], 162]
     :rtype: List[List[int], int]
     """
-    # TODO: в этой функции пишем весь необходимый код для
-    #  получения входных параметров.
-    #  Логику расчётов тут не программируем
-    pass
+    list_cont = []
+    all_list = []
+
+    n = int(input('Количество контейнеров: '))
+
+    for i in range(n):
+        cont = int(input('Введите вес контейнера: '))
+        while cont > 200:
+            print('Введенный вес контейнера должен быть меньше 200! ')
+            cont = int(input('Введите вес контейнера: '))
+        list_cont.append(cont)
+
+    new_cont = int(input('Введите вес нового контейнера: '))
+    all_list.append(list_cont)
+    all_list.append(new_cont)
+    return all_list
 
 
 def display_result(serial_number_new_container):
@@ -20,10 +32,8 @@ def display_result(serial_number_new_container):
     :param serial_number_new_container: порядковый номер нового контейнера, например: 3
     :type serial_number_new_container: int
     """
-    # TODO: в этой функции пишем весь необходимый код
-    #  для вывода результата в нужном формате.
-    #  Логику расчётов тут не программируем
-    pass
+
+    print(f'Номер, который получит новый контейнер: {serial_number_new_container}')
 
 
 def search_serial_number_new_container(list_container_weights, new_container_weight):
@@ -38,13 +48,15 @@ def search_serial_number_new_container(list_container_weights, new_container_wei
     :return: порядковый номер нового контейнера, например: 3
     :rtype: int
     """
-    # TODO: в этой функции пишем логику поиска куда вставим новый контейнер.
-    #  print'ов и input'ов тут не должно быть.
-    #  Функция на вход принимает ранее полученные данные
-    #  (из функции get_input_parameters).
-    #  Функция на выход отдаёт результат необходимый для отображения работы программы,
-    #  который будет передан в функцию display_result.
-    pass
+    list_container_weights.append(new_container_weight)
+    list_container_weights.sort(reverse=True)
+
+    for j in range(len(list_container_weights)):
+        if list_container_weights[j] < new_container_weight:
+            param = j
+            break
+
+    return param
 
 
 if __name__ == '__main__':
